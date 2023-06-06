@@ -32,6 +32,9 @@ Notification to an issuer that a Prepaid card has been purchased and should be a
 ## Acquirer
 The acquirer or acquiring bank is the bank or financial institution that processes credit or debit card transactions on behalf of a merchant. The acquirer sends the merchant's transactions to the customer's issuing bank through the card network.
 
+## Acquirer Reference Number
+An Account Reference Number (ARN) also known as a Retrieval Reference Number, is a UUID returned in the [processor response details](?path=docs/Resources/Master-Data/Processor-Response-Details.md) for a credit card transaction. Similar to STAN, an ARN is also used for refunds to track the processes through the acquiring bank, network, issuer, and processor.
+
 ## Address Verification Service 
 The [Address Verification Service (AVS)](?path=docs/Resources/Guides/Fraud/Address-Verification.md) verifies customer-supplied billing address information against the billing address on the file at the issuer for Card Not Present transactions.
 
@@ -194,7 +197,7 @@ Identifies a bill pay transaction where a recurring or incremental payment is de
 Derived Unique Key Per Transaction (DUKPT) allows the encryption of a PIN via the use of a unique key for each transaction. DUKPT system of derived keys is used in a point-of-sale (POS) environment where the merchant can accept transactions from a large number of unique [PIN entry](?path=docs/Resources/Master-Data/Pin-Block.md) devices. This technique involves the use of a non-secret key serial number and a secret base derivation key. On each transaction, the PIN pad derives a unique key based on a previous key and the key serial number. Terminal encrypts the PIN with this derived key, and sends both the encrypted PIN and the key serial number to the Host. See also [Key Management](#key-management).
 
 ## Direct Capture
-Direct capture also known as direct settlement, is the process where the merchant's directly settles the batche on the backend settlement system. Typically, credit transactions are setup for direct capture. See also [host capture](#host-capture) and [terminal capture](#terminal-capture).
+Direct capture also known as terminal direct capture or direct settlement, is the process where the merchant or the merchant's terminal directly settles the batch on the backend settlement system. Typically, credit transactions are setup for direct capture. See also [host capture](#host-capture) and [gateway capture](#gateway-capture).
 
 ## Doing Business As
 Doing business as (DBA) refers to the specific name and location of the merchant's store where a transaction is made.
@@ -318,6 +321,9 @@ Funding Primary Account Number (FPAN) is the actual account number appearing on 
 ## Gateway
 A gateway is a program or piece of hardware that passes data between networks.
 
+## Gateway Capture
+Gateway capture also known as gateway settlement, is the process where Commerce Hub closes and settles batches on behalf of the merchant. Typically, credit transactions are setup for terminal capture. See also [host capture](#host-capture) and [direct capture](#direct-capture).
+
 ---
 
 # H
@@ -335,7 +341,7 @@ Hash-based Message Authentication Code, used to ensure secure transmission of tr
 The host is generally the central or controlling computer in a distributed system.
 
 ## Host Capture
-Host capture also known as host capture system (HCS), is the process where the host _(e.g. Commerce Hub)_ closes and settles batches on behalf of the merchant. Typically, debit transactions are single message transactions and setup for host capture. See also [direct capture](#direct-capture) and [terminal capture](#terminal-capture).
+Host capture also known as host capture system (HCS), is the process where the host _(e.g. Buypass)_ closes and settles batches on behalf of the merchant. Typically, debit transactions are single message transactions and setup for host capture. See also [direct capture](#direct-capture) and [gateway capture](#gateway-capture).
 
 ## Host Security Module
 A Host Security Module (HSM) is a hardware device that safeguards and manages digital keys for strong authentication and provides crypto-processing. HSM’s are typically supported for merchants supporting an encrypted online PIN in transactions sent to Commerce Hub.
@@ -448,7 +454,7 @@ This entry is used to indicate that market-specific authorization data was prese
 Information supplied in the authorization request to assist the issuer in making better authorization decisions.
 
 ## Manual Refund
-A [credit](?path=docs/Resources/API-Documents/Payments/Credit.md) that is not associated with a previous payment. Because it is an independent transaction, it can be for any amount; a manual refund is not limited to the total of a previous sale. Also referred to as an open refund.
+A manual refund is an [open refund](?path=docs/Resources/API-Documents/Payments/Refund-Open.md) (credit) that is not associated with a previous payment. Because it is an independent transaction, it can be for any amount; a manual refund is not limited to the total of a previous sale.
 
 ## Masterpass
 Masterpass is a digital wallet service that makes online shopping safe and easy by storing the customer's payment and shipping information securely.
@@ -551,7 +557,7 @@ A secondary transaction that [captures](?path=docs/Resources/API-Documents/Payme
 A pre-auth is a customer transaction where the merchant can validate a given amount is available on the customer payment method (physical card, digital wallet, etc.) and places a hold on a project sale amount. This amount is held on the customer account (credit limit or bank balance), but not yet transferred to the merchant. Once the merchant initiates a [capture](?path=docs/Resources/API-Documents/Payments/Capture.md) transaction, the held amount is then settled with the merchant batch.
 
 ## Primary Transaction
-The main independent transactions between a customer and a merchant. Commerce Hub supports [Charges](?path=docs/Resources/API-Documents/Payments/Charges.md), [Credit](?path=docs/Resources/API-Documents/Payments/Credit.md), and [Forced](?path=docs/Resources/API-Documents/Payments/Forced.md) transactions.
+The main independent transaction between a customer and a merchant.
 
 ## Prepaid Closed Loop
 Prepaid Closed Loop is a [gift card](?path=docs/Resources/Guides/Payment-Sources/Gift-Card.md) product that is designed to only be used at the merchant's locations. Closed Loop payment schemes allow companies to reward loyalty and increase customer intimacy. 
@@ -657,9 +663,6 @@ High-speed transmission, synchronous communications is the transmission and reco
 
 ## TeleCheck ECA
 The TeleCheck Electronic Check Acceptance® (ECA®) is a service that converts a paper check into an electronic item at the point of sale.
-
-## Terminal Capture
-Terminal capture also known as terminal capture system (TCS), is the process where the merchant's temrinal closes and settles batches. Typically, credit transactions are setup for terminal capture. See also [host capture](#host-capture) and [direct capture](#direct-capture).
 
 ## Transport Layer Security
 Transport Layer Security (TLS), previously known as Secure Sockets Layer (SSL) is a cryptographic protocol designed to provide communications security over a computer network. Commerce Hub requires that integrations using our RESTful API have TLS to meet PCI compliance requirements.

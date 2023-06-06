@@ -88,9 +88,9 @@ titles: network, Amex, Discover, Mastercard, Visa, Debit
 
 The below table identifies the parameters in the `network` object.
 
-|Variable |Type| Maximum Length | Description|
+| Variable |Type| Maximum Length | Description|
 |------|--------|-------|----------------|
-| `network` | *string* |  | Processing card network |
+| `network` | *string* | N/A | Processing [card network](#card-network) |
 
 <!--
 type: tab
@@ -151,7 +151,7 @@ The below table identifies the parameters specific to Mastercard.
 |Variable |Type| Maximum Length | Description|
 |------|--------|-------|----------------|
 | `interchangeComplianceIndicator` | *string* | | A code to indicate that Mastercard interchange compliance data was provided for this transaction, and if any other special Mastercard authorization requirements were met. |
-| 'bankNetRefNumber' | *string* | | A Mastercard generated identifier for each original authorization request. Reference number assigned by Mastercard to each authorization message. |
+| `bankNetRefNumber` | *string* | | A Mastercard generated identifier for each original authorization request. Reference number assigned by Mastercard to each authorization message. |
 | `bankNetDate` | *string* | | A Mastercard generated date for this transaction. MMDD format |
 | `cvcErrorIndicator` | *string* | | Indicates the CVC Error response data. |
 | `transactionEditErrorCode` | *string* | | Indicates the track data & POS validation Error in response data. ***Valid Values:** MISSING_TRACK_DATA, PRESENT_TRACK_DATA, PAN_DOES_NOT_MATCH_WITH_TRACK_DATA, EXPIRY_DATE_DOES_NOT_MATCH_WITH_TRACK_DATA, CARD_TYPE_INVALID, FIELD_SEPARATOR_INVALID, EXCEEDS_MAX_LENGTH, TRANSACTION_CODE_T, POS_CUST_PRESENT_1, POS_CARD_PRESENT_1* |
@@ -255,8 +255,6 @@ The below table identifies the parameters specific to Debit.
 - [Cancel Request](?path=docs/Resources/API-Documents/Payments/Cancel.md)
 - [Charge Request](?path=docs/Resources/API-Documents/Payments/Charges.md)
 - [Capture Request](?path=docs/Resources/API-Documents/Payments/Capture.md)
-- [Refund Request](?path=docs/Resources/API-Documents/Payments/Refund.md)
-- [Credit Request](?path=docs/Resources/API-Documents/Payments/Credit.md)
-- [Forced Post](?path=docs/Resources/API-Documents/Payments/Forced.md)
+- [Refund Requests](?path=docs/Resources/API-Documents/Payments/Refund.md)
  
 ---

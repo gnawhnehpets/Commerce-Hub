@@ -15,7 +15,7 @@ The below table identifies the parameters in the `transactionDetails` object.
 
 | Variable | Type| Maximum Length | Description|
 |---------|-----------|----------------|---------|
-| `approvalCode` | *string* | N/A | Reference number received as the result of a successful external authorization (e.g. by phone). The gateway requires this number for a [forced post](?path=docs/Resources/API-Documents/Payments/Forced.md) transaction to a previously performed external authorization. |
+| `approvalCode` | *string* | N/A | Reference number received as the result of a successful external authorization (e.g. by phone). The gateway requires this number for a forced post transaction to a previously performed external authorization. |
 | `primaryTransactionId` | *string* | 40 | The unique identifier from the original transaction passed for a reauthorization and incremental authorization. |
 | `captureFlag` | *boolean* | N/A | Designates if the transaction should be captured. Auth (*FALSE*) or Sale (*TRUE*)|
 | `transactionCaptureType` | *string* | 64 | Identifies the [capture type for settlement](?path=docs/Resources/Guides/Settlement/Transaction-Capture-Type.md). |
@@ -26,14 +26,13 @@ The below table identifies the parameters in the `transactionDetails` object.
 | `primaryTransactionType` | *string* | 14 | Identifies the [primary transaction type](#primary-transaction-type).|
 | `deviceFingerprint` | *array* | N/A | An array containing the [device fingerprint](?path=docs/Resources/Master-Data/Device-Fingerprint.md) details.|
 | `splitShipment` | *object* | N/A| Identifies the number of shipments if the transaction will contain [multiple shipments](?path=docs/Resources/Guides/Split-Shipment.md). Can be set during pre-auth or the first post-auth.|
-| `reversalReasonCode` | *string* | 22 | [Reason](#reversal-reason-code) the merchant/customer requests for cancel (void).|
+| `reversalReasonCode` | *string* | 22 | [Reason](?path=docs/Resources/Master-Data/Transaction-Details.md#reversal-reason-code) the merchant/customer requests for cancel (void).|
 | `physicalGoodsIndicator` | *boolean* | N/A | Identifies if physical goods were sold.|
 | `authorizationSequence` | *string* | 27 | Type of [authorization sequence](?path=docs/Resources/Guides/Authorizations/Re-Auth.md#authorization-sequence) requested.|
 | `createToken` | *boolean* | N/A | Used to create a token on a charge transaction. |
 | `primaryOrderId` | *string* | 40 | The unique identifier from the original transaction passed for a reauthorization and incremental authorization. |
 | `clientRequestId` | *string* |64 | Echoes back the value in the request header for tracking. |
 | `accountVerification` | *boolean* | N/A | Determines if verification should be performed on the Payment Type.|
-| `authentication3DS` | *boolean* | N/A | Determines if 3-D Secure authentication should be performed.
 | `partialApproval` | *string* | 32 | Indicates if a partial approval is allowed. Partial approval should only be used in a card present or gift card transaction. Refer [Partial Approval](#partial-approval) for valid values.|
 | `receiptEmail` | *string* | 256 | Email address to send the digital receipt.|
 | `paymentDescription` | *string* | 1024 | Payment Description |
@@ -70,10 +69,8 @@ JSON string format for `transactionDetails`:
       "partiallyApprovedTransactionAmount": 10.55,
       "splitTenderId": "12423434",  
       "authorizationTypeIndicator": "REAUTH",
-      "accountVerification": false,
       "duplicateTransactionCheckingIndicator": true,
       "primaryTransactionType": "CHARGE_SALE",
-      "vaultFundingSource": true,  /// Future Release
       "deviceFingerprint":[  
          {
             "provider": "InAuth",  
@@ -136,22 +133,6 @@ The below table identifies the valid values of `primaryTransactionType`.
 | *CHARGE_SALE* | Sale |
 | *CANCEL* | Cancel/Void |
 | *REFUND* | Refund |
-
-#### Reversal Reason Code
-
-The below table identifies the valid values of `reversalReasonCode` the reason merchant/customer requests for cancel (void).
-
-| Value | Description |
-| ----- | ----- |
-| *VOID* | Cancel/Void |
-| *TIMEOUT* | Transaction timeout |
-| *EDIT_ERROR* | 
-| *MAC_VERIFICATION_ERROR* | Mac Verification error |
-| *MAC_SYNCH_ERROR* | Mac sync error |
-| *ENCRYPTION_ERROR* | Encryption error |
-| *SYSTEM_ERROR* | System error |
-| *SUSPECTED_FRAUD* | Suspect fraud |
-| *CARD_OVERRIDE* | Chip card override |
 
 ---
 

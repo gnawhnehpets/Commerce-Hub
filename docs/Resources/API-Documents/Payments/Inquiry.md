@@ -4,7 +4,7 @@ tags: [Inquiry, Transaction Inquiry, Transaction Status, API Reference]
 
 # Transaction Inquiry
 
-To retrieve the current state of any previous transaction, an inquiry request can be submitted against the original Commerce Hub transaction identifier or [merchant transaction identifier](?path=docs/Resources/Guides/BYOID.md).
+To retrieve the current state of any previous transaction, an inquiry request can be submitted against the Commerce Hub transaction identifier or [merchant transaction identifier](?path=docs/Resources/Guides/BYOID.md).
 
 ---
 
@@ -75,6 +75,13 @@ type: tab
 -->
 
 ##### Example of an inquiry (201: Success) response.
+
+The below table identifies additional arrays that may be returned in the inquiry response.
+
+| Variable | Type| Maximum Length | Description|
+|---------|-----------|----------------|---------|
+| `linkedTransactions` | *array* | N/A | List of transactions linked to the inquiry, most common when requesting information about a [cancel](?path=docs/Resources/API-Documents/Payments/Cancel.md) request. |
+| `error` | *array* | N/A | If the referenced transaction was unsuccessful, the list of [errors](?path=docs/Resources/Guides/Response-Codes/Response-Handling.md) will be returned. |
 
 <!-- theme: info -->
 > See [Response Handling](?path=docs/Resources/Guides/Response-Codes/Response-Handling.md) for more information.
