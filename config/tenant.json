@@ -63,7 +63,7 @@
       "apiSpecFileNames": ["openapi"]
     }
   ],
-  "featureBranches": ["develop"],
+  "featureBranches": ["PORT-6475-GTS-carat-merge"],
   "product": {
     "featured": true,
     "logoURL": "https://raw.githubusercontent.com/Fiserv/Commerce-Hub/develop/assets/images/Commerce-Hub-Circle.png",
